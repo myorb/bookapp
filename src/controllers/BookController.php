@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * BookController implements the CRUD actions for Book model.
@@ -22,6 +23,10 @@ class BookController extends Controller
     //    // parent::__construct($this->id, $this->module);
     // }
 
+    /**
+     * Behaviors, eg. access control
+     * @return array
+     */
     public function behaviors()
     {
        $this->layout = 'container';
@@ -33,6 +38,39 @@ class BookController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+            'class' => AccessControl::className(),
+            'only' => ['create', 'update', 'delete'],
+            'rules' => [
+                // deny all POST requests
+                [
+                    'allow' => false,
+                    'verbs' => ['POST']
+                ],
+                // allow authenticated users
+                [
+                    'allow' => true,
+                    'roles' => ['@'],
+                ],
+                // everything else is denied
+            ],
+        ],
+            // 'access' => [
+            //     'class' => AccessControl::className(),
+            //     'rules' => [
+            //         [
+            //             'actions'       => ['index', 'view-config'],
+            //             'allow'         => true,
+            //             'roles'         => ['@'],
+            //             'matchCallback' => function ($rule, $action) {
+            //                 return in_array(
+            //                     \Yii::$app->user->identity->username,
+            //                     \Yii::$app->getModule('user')->admins
+            //                 );
+            //             }
+            //         ],
+            //     ]
+            // ]
         ];
     }
 
