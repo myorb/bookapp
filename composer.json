@@ -35,7 +35,9 @@
     "dmstr/yii2-cms-metapackage": "*",
     "vlucas/phpdotenv": "2.*",
     "yiisoft/yii2": "2.0.*",
-    "yiisoft/yii2-composer": "2.0.*"
+    "yiisoft/yii2-composer": "2.0.*",
+    "kartik-v/yii2-widget-fileinput": "@dev",
+    "newerton/yii2-fancybox": "dev-master"
   },
   "require-dev": {
     "dmstr/yii2-cms-dev-metapackage": "dev-master",

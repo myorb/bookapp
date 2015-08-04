@@ -43,6 +43,8 @@ AppAsset::register($this);
     );
     $menuItems = [
         ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Books', 'url' => ['/book/index']],
+        ['label' => 'Authors', 'url' => ['/author/index']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->hasModule('user')) {
