@@ -11,8 +11,10 @@ ADD ./build/container-files/ /
 # Install application packages, if there are changes the composer files
 ADD ./composer.lock ./composer.json /app/
 RUN /usr/local/bin/composer global require "fxp/composer-asset-plugin:dev-master"
+
+# RUN composer self-update
+# RUN composer global update
 RUN /usr/local/bin/composer install --prefer-dist --optimize-autoloader
-RUN /usr/local/bin/composer update 
 
 # Add application code
 ADD version /app/version
